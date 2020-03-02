@@ -1,3 +1,28 @@
-html {
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   
+  h1 {
+    width: fit-content;
+  }
+
+  ul {
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+  }
+}
+
+section.game {
+  width: fit-content;
+  margin: 0 auto;
+
+  canvas {
+    border: 1px solid black;
+  }
+}
+
+footer {
+
 }
