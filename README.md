@@ -5,12 +5,19 @@ Guide the Albatross as he tidies up the beach while avoiding obstacles.
 
 ## Functionality and MVPs 
 
- - Users earn points for each item picked up
+ - Player earns points for each item picked up
+      - items include different pieces of trash littered on the sand
+      - each item has a point value 
+ - Player has points deducted when hitting obstacles
+      - obstacles include firepits, and seal herds
+      - each obstacle deducts a number of points
  - Endless runner, speed is constant
- - Users can change Al's directions using left right / 'a', 'd' keys
+      - over time the speed of the speed gets speedier
+ - Player can change Al's position using up + down keys
+      a. to intercept trash
+      b. to avoid obstacles 
  - links to Portfolio, Github and LinkedIn.
- - Landing page with  instructions.
-
+ - Landing page with instructions
 
 
 ## Wireframes 
@@ -18,7 +25,7 @@ Guide the Albatross as he tidies up the beach while avoiding obstacles.
 <!-- https://wireframe.cc/f7DAu5 -->
 
 ## Architecture and Technology 
- - look into three.js
+ - canvas
 
 ## Implementation Timeline 
  - Monday March 2
