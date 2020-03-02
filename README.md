@@ -8,6 +8,9 @@ Guide the Albatross as he tidies up the beach while avoiding obstacles.
  - Users earn points for each item picked up
  - Endless runner, speed is constant
  - Users can change Al's directions using left right / 'a', 'd' keys
+ - links to Portfolio, Github and LinkedIn.
+ - Landing page with  instructions.
+
 
 
 ## Wireframes 
