@@ -1,3 +1,30 @@
-html {
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   
+  h1 {
+    width: fit-content;
+  }
+
+  ul {
+    display: flex;
+    justify-content: flex-end;
+    list-style: none;
+  }
+}
+
+section.game {
+  width: 800px;
+  margin: 0 auto;
+  position: relative;
+
+  canvas {
+    border: 1px solid black;
+    position: absolute;
+  }
+}
+
+footer {
+
 }

@@ -24,6 +24,17 @@ Guide the Albatross as he tidies up the beach while avoiding obstacles.
 ![game](/assets/images/game.png)
 <!-- https://wireframe.cc/f7DAu5 -->
 
+/src
+ - index.js
+ - /scripts
+   - Beach.js
+   - Trash.js
+   - Albatross.js
+   - Obstacle.js
+ - /styles
+
+
+
 ## Architecture and Technology 
  - canvas
 
