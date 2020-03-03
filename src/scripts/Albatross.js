@@ -4,34 +4,46 @@ export default class Albatross {
     this.canvas = cnvs;
     this.pos = 300;
     this.draw = this.draw.bind(this);
+    this.al = new Image();
+    this.al.src = './src/images/al-web.png';
+    this.speed = 0;
   }
 
   init() {
     document.addEventListener("keydown", e => {
       e.preventDefault();
       let key = e.keyCode;
-      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.move(key);
-      requestAnimationFrame(this.draw);
     });
+
+    document.addEventListener("keyup", e => {
+      e.preventDefault();
+      // this.speed = 0;
+    })
   }
 
   draw() {
-    this.ctx.beginPath();
-    this.ctx.rect(100, this.pos, 50, 50);
-    this.ctx.fillStyle = "#ffffff";
-    this.ctx.fill();
+    this.pos += this.speed;
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.drawImage(this.al, 100, this.pos);
+
+    requestAnimationFrame(this.draw);
   }
 
   move(key) {
+    console.log(this.speed)
     switch (key) {
       case 40: // down
-        this.pos = this.pos + 24;
+        // this.pos = this.pos + 12;
+        this.speed = 1;
+        break;
       case 38: // up
-        this.pos = this.pos - 12;
+        // this.pos = this.pos - 12;
+        this.speed = -1;
+        break;
       default:
         break;
     }
+    this.draw()
   }
-
 };
