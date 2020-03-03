@@ -14,6 +14,8 @@ export default class Albatross {
       let key = e.keyCode;
       if (key === 38 || key === 40) e.preventDefault();
       this.move(key);
+      this.draw();
+      console.log(this.pos += this.speed);
     });
 
     document.addEventListener("keyup", e => {
@@ -23,14 +25,12 @@ export default class Albatross {
 
   draw() {
     this.pos += this.speed;
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.clearRect(100, this.pos - 2, 65, 40);
     this.ctx.drawImage(this.al, 100, this.pos);
-
     requestAnimationFrame(this.draw);
   }
 
   move(key) {
-    console.log(this.speed)
     switch (key) {
       case 40: // down
         // this.pos = this.pos + 12;
@@ -43,6 +43,5 @@ export default class Albatross {
       default:
         break;
     }
-    this.draw()
   }
 };
