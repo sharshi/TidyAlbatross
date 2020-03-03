@@ -1,4 +1,4 @@
-header{width:100%;display:flex;justify-content:space-between}header h1{width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}header ul{display:flex;justify-content:flex-end;list-style:none}section.game{width:800px;margin:0 auto;position:relative}section.game canvas{border:1px solid black;position:absolute}
+html{height:100%;background:linear-gradient(#3400cd 25%, #ffdc93 50%)}html header{width:100%;display:flex;justify-content:space-between}html header h1{width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;color:#ffdc93}html header ul{display:flex;justify-content:flex-end;list-style:none}html header ul a{color:white}html header ul a:visited{color:lightgray}html section.game{width:800px;margin:0 auto;position:relative}html section.game canvas{border:1px solid black;position:absolute}
 
 
 /*# sourceMappingURL=main.css.map*/
