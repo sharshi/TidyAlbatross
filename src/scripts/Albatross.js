@@ -11,14 +11,13 @@ export default class Albatross {
 
   init() {
     document.addEventListener("keydown", e => {
-      e.preventDefault();
       let key = e.keyCode;
+      if (key === 38 || key === 40) e.preventDefault();
       this.move(key);
     });
 
     document.addEventListener("keyup", e => {
-      e.preventDefault();
-      // this.speed = 0;
+      this.speed = 0;
     })
   }
 
