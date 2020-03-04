@@ -14,6 +14,10 @@ export default class Game {
     this.beach = new Beach();
     this.addObstacle = this.addObstacle.bind(this);
     this.addTrash = this.addTrash.bind(this);
+
+    // logic
+    this.ctx.font = "30px Arial";
+    this.score = 10;
   }
 
   init() {
@@ -44,24 +48,60 @@ export default class Game {
     this.beach.draw();
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-    this.obstacles.forEach((obs, i) => {
-      if (obs.posX < -30) {
-        delete this.obstacles[i];
-      }
-      obs.draw(this.ctx);
-    })
-    this.obstacles = this.obstacles.filter(obs => obs)
+    if (this.score < 0 ) {
+      this.ctx.fillStyle = "white";
+      this.ctx.fillText(`game over`, 10, 40);
+    } else {
 
-    this.trash.forEach((trsh, i) => {
-      if (trsh.posX < -30) {
-        delete this.trash[i];
-      }
-      trsh.draw(this.ctx);
-    })
-    this.trash = this.trash.filter(trsh => trsh)
+      // GENERATE POINTS AND REMOVE ASSETS FROM CANVA
+      const albatrossLocation = { 
+        x: 100, 
+        y: this.albatross.pos 
+      };
+  
+      this.obstacles.forEach((obs, i) => {
+        if (obs.posX < -30) {
+          delete this.obstacles[i];
+        }
+        obs.draw(this.ctx);
+        if (
+            albatrossLocation.y - obs.y < 30 && albatrossLocation.y - obs.y > -30 &&
+            obs.posX - 100 <= 60 &&
+            obs.posX - 100 >= -60 &&
+            !obs.hit
+          ) {
+          obs.hit = true;
+          this.score = this.score - 1;
+        }
+      })
+      this.obstacles = this.obstacles.filter(obs => obs)
+  
+      this.trash.forEach((trsh, i) => {
+        if (trsh.posX < -30) {
+          delete this.trash[i];
+        }
+        if (
+            albatrossLocation.y - trsh.y < 30 &&
+            albatrossLocation.y - trsh.y > -30 && 
+            trsh.posX - 100 <= 60 &&
+            trsh.posX - 100 >= -5 
+          ) {
+          this.score = this.score + 1;
+          delete this.trash[i];
+        } else {
+          trsh.draw(this.ctx);
+        }
+      })
+      this.trash = this.trash.filter(trsh => trsh)
+  
+  
+      this.albatross.draw();
+      this.ctx.fillStyle = "white";
+      this.ctx.fillText(`Score: ${this.score}`, 10, 40);
+  
+      requestAnimationFrame(this.draw);
+    }
 
-    this.albatross.draw();
-    requestAnimationFrame(this.draw);
   }
 
 
