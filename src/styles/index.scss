@@ -23,6 +23,18 @@ html {
         &:visited {
           color: lightgray;
         }
+
+        img {
+          width: 40px;
+          height: 40px;
+          margin: 5px;
+          transition: margin 0.3s, width 0.3s, height 0.3s;
+          &:hover {
+            margin: 3px;
+            width: 44px;
+            height: 44px;
+          }
+        }
       }
     }
   }
@@ -31,10 +43,12 @@ html {
     width: 800px;
     margin: 0 auto;
     position: relative;
+    min-height: 480px;
 
     canvas {
       border: 1px solid black;
       position: absolute;
+      border-radius: 50px;
     }
   }
   
