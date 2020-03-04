@@ -56,7 +56,7 @@ export default class Game {
       // GENERATE POINTS AND REMOVE ASSETS FROM CANVA
       const albatrossLocation = { 
         x: 100, 
-        y: this.albatross.pos 
+        y: this.albatross.pos
       };
   
       this.obstacles.forEach((obs, i) => {
