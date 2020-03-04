@@ -9,19 +9,38 @@ export default class Albatross {
     this.speed = 0;
     this.maxHeight = 100;
     this.minHeight = 440;
+    this.handleDown = this.handleDown.bind(this);
   }
 
-  init() {
-    document.addEventListener("keydown", e => {
-      let key = e.keyCode;
-      if (key === 38 || key === 40) e.preventDefault();
-      this.move(key);
-      this.draw();
-    });
+  handleDown(e) {
+    
+    let key;
+    if (e.type === 'touchstart') {
+      key = this.getTouchPos(this.canvas, e);
+    } else {
+      key = e.keyCode;
+    }
+    
+    if ((key === 38 || key === 40) && e.type !== 'touchstart') e.preventDefault();
+    this.move(key);
+    this.draw();
+  }
 
-    document.addEventListener("keyup", e => {
-      this.speed = 0;
-    })
+  getTouchPos(canvas, e) {
+    var rect = canvas.getBoundingClientRect();
+    const coords = {
+      x: e.targetTouches[0].clientX - rect.left,
+      y: e.targetTouches[0].clientY - rect.top
+    };
+    return (coords.y > this.pos) ? 40 : 38;
+  }
+
+
+  init() { 
+    document.addEventListener("keydown", this.handleDown);
+    document.addEventListener("touchstart", this.handleDown);
+    document.addEventListener("keyup", () => this.speed = 0);
+    document.addEventListener("touchend", () => this.speed = 0);
   }
 
   draw() {
