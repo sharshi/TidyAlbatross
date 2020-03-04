@@ -20,6 +20,8 @@ export default class Beach {
   }
 
   init() {
+    this.backgroundWater.started = false;
+    this.backgroundSand.started = false;
     this.draw();
   }
 
