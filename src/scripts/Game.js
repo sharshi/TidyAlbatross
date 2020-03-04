@@ -23,6 +23,8 @@ export default class Game {
     this.trashTO;
     this.obstacleTO;
 
+    // overall speed
+    this.speed = speed;
   }
 
   init() {
@@ -60,13 +62,7 @@ export default class Game {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
     if (this.score < 0 ) {
-      this.init()
-      clearTimeout(this.trashTO);
-      clearTimeout(this.obstacleTO);
-      this.trash = [];
-      this.obstacles = [];
-      this.ctx.fillStyle = "white";
-      this.ctx.fillText(`game over :(`, 100, 200);
+      this.gameOver();
     } else {
 
       // GENERATE POINTS AND REMOVE ASSETS FROM CANVA
@@ -119,10 +115,14 @@ export default class Game {
     }
 
   }
-
-
-
-
   
-
+  gameOver() {
+    this.init();
+    clearTimeout(this.trashTO);
+    clearTimeout(this.obstacleTO);
+    this.trash = [];
+    this.obstacles = [];
+    this.ctx.fillStyle = "white";
+    this.ctx.fillText(`game over :(`, 100, 200);
+  }
 };

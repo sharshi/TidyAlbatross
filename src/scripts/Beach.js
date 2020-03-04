@@ -25,8 +25,8 @@ export default class Beach {
     this.draw();
   }
 
-  draw() {
-    this.backgroundWater.draw();
-    this.backgroundSand.draw();
+  draw(speed) {
+    this.backgroundWater.draw(speed);
+    this.backgroundSand.draw(speed);
   }
 };
