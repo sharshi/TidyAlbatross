@@ -12,6 +12,7 @@ export default class Obstacle {
     this.img = new Image();
     this.img.src = `./src/images/${this.type}.png`;
     this.y = Math.floor(Math.random() * 380) + 100;
+    this.hit = false;
   }
 
   draw(context) {

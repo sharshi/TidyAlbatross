@@ -11,8 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
   canvasGame.height = 480;
   const ctxGame = canvasGame.getContext("2d");
   let speed = 1;
-  const beach = new Beach();
-  beach.init();
   const game = new Game(speed, canvasGame, ctxGame);
   game.init();
 })
