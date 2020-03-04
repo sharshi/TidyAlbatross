@@ -6,16 +6,9 @@ export default class Background {
     this.ctx = ctx;
     this.image = image;
     this.draw = this.draw.bind(this);
-    this.drawOne = this.drawOne.bind(this);
   }
 
   draw() {
-    this.drawOne();
-    requestAnimationFrame(this.draw)
-  }
-
-
-  drawOne() {
     let beachImage = new Image(480, 480);
     beachImage.src = `./src/images/${this.image}.png`;
     beachImage.addEventListener('load', () => {

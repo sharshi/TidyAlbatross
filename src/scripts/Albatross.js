@@ -25,30 +25,22 @@ export default class Albatross {
   }
 
   draw() {
-    const tooHigh = this.pos === this.maxHeight && this.speed === -1;
-    const tooLow = this.pos === this.minHeight && this.speed === 1;
+    const tooHigh = this.pos === this.maxHeight && this.speed === -5;
+    const tooLow = this.pos === this.minHeight && this.speed === 5;
     if (tooHigh || tooLow) {
-
     } else {
-
-      this.ctx.clearRect(100, this.pos - 2, 65, 40);
-
-      this.ctx.globalCompositeOperation = 'source-over';
-      this.ctx.drawImage(this.al, 100, this.pos);
-
-      requestAnimationFrame(this.draw);
       this.pos += this.speed;
-
     }
+    this.ctx.drawImage(this.al, 100, this.pos);
   }
 
   move(key) {
     switch (key) {
       case 40: // down
-        this.speed = 1;
+        this.speed = 5;
         break;
       case 38: // up
-        this.speed = -1;
+        this.speed = -5;
         break;
       default:
         break;
