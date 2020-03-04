@@ -18,13 +18,13 @@ export default class StartScreen {
     this.ctx.fillText('Use the up and down arrow keys to help', this.cnvs.width / 2, 250);
     this.ctx.fillText('the albatross avoid obstacles and tidy up the beach.', this.cnvs.width / 2, 330 - 50);
 
-    const seal = Obstacle.generate();
-    const firePit = Obstacle.generate();
-    const person = Obstacle.generate();
+    const seal = new Obstacle();
+    const firePit = new Obstacle();
+    const person = new Obstacle();
 
-    const bottle = Trash.generate();
-    const bag = Trash.generate();
-    const beachBall = Trash.generate();
+    const bottle = new Trash();
+    const bag = new Trash();
+    const beachBall = new Trash();
 
 
     // avoid

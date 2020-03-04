@@ -36,7 +36,7 @@ export default class Game {
   addObstacle() {
     var rand = Math.round(Math.random() * (3000 - 500)) + 2000;
     setTimeout(() => {
-      this.obstacles = this.obstacles.concat(Obstacle.generate());
+      this.obstacles = this.obstacles.concat(new Obstacle());
       this.addObstacle();
     }, rand);
   }
@@ -44,7 +44,7 @@ export default class Game {
   addTrash() {
     var rand = Math.round(Math.random() * (3000 - 500)) + 2000;
     setTimeout(() => {
-      this.trash = this.trash.concat(Trash.generate());
+      this.trash = this.trash.concat(new Trash());
       this.addTrash();
     }, rand);
   }
