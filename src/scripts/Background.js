@@ -16,11 +16,11 @@ export default class Background {
 
 
   drawOne() {
-    var beachImage = new Image(480, 480);
+    let beachImage = new Image(480, 480);
     beachImage.src = `./src/images/${this.image}.png`;
     beachImage.addEventListener('load', () => {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      var tileBg = this.ctx.createPattern(beachImage, 'repeat');
+      let tileBg = this.ctx.createPattern(beachImage, 'repeat');
       this.ctx.fillStyle = tileBg;
       this.ctx.translate(-this.bgPos, 0);
       this.ctx.fillRect(this.bgPos, 0, this.canvas.width, this.canvas.height);
