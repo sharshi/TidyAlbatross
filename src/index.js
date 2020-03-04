@@ -1,8 +1,6 @@
 // js
-import Game from './scripts/Game';
-import Beach from './scripts/Beach';
+import Game from './scripts/game';
 
-// css
 import "./styles/index.scss";
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -1,6 +1,7 @@
 const TRASH = [
   'bottle',
-  'bag'
+  'bag',
+  'beach-ball'
 ];
 
 export default class Trash {
@@ -17,9 +18,17 @@ export default class Trash {
     context.drawImage(this.img, this.posX -= 1, this.y);
   }
 
+  drawOne(context, posX, posY, image) {
+    const img = new Image();
+    img.src = `./src/images/${image}.png`;
+    img.addEventListener('load', () => {
+      context.drawImage(img, posX, posY);
+    });
+  }
 
-  static generate(context) {
-    return new Trash(context);
+
+  static generate() {
+    return new Trash();
   }
 
 };

@@ -1,3 +1,5 @@
+import StartScreen from "./start_screen";
+
 export default class Background {
   constructor(speed, canvas, ctx, image) {
     this.bgPos = 0;
@@ -6,6 +8,9 @@ export default class Background {
     this.ctx = ctx;
     this.image = image;
     this.draw = this.draw.bind(this);
+    this.startScreen = new StartScreen(this.canvas, this.ctx)
+
+    this.started = false;
   }
 
   draw() {
@@ -19,6 +24,10 @@ export default class Background {
       this.ctx.fillRect(this.bgPos, 0, this.canvas.width, this.canvas.height);
       this.ctx.translate(this.bgPos, 0);
       this.bgPos += this.speed;
+      if (this.image === 'sand' && !this.started) {
+        this.started = true;
+        this.startScreen.draw();
+      }
     }, false);
   }
 };
