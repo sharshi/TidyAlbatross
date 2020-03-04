@@ -1,4 +1,4 @@
-import Background from './Background';
+import Background from './background';
 
 export default class Beach {
   constructor() {

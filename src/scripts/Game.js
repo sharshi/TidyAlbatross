@@ -1,7 +1,7 @@
-import Albatross from './Albatross';
-import Beach from './Beach';
-import Obstacle from './Obstacle';
-import Trash from './Trash';
+import Albatross from './albatross';
+import Beach from './beach';
+import Obstacle from './obstacle';
+import Trash from './trash';
 
 export default class Game {
   constructor(speed, canvas, ctx) {
@@ -23,12 +23,12 @@ export default class Game {
   init() {
     this.beach.init();
     this.canvas.addEventListener('click', this.handleStart);
-    this.addObstacle();
-    this.addTrash();
   }
 
   handleStart() {
     this.albatross.init();
+    this.addObstacle();
+    this.addTrash();
     this.draw();
     this.canvas.removeEventListener('click', this.handleStart);
   }
@@ -36,7 +36,7 @@ export default class Game {
   addObstacle() {
     var rand = Math.round(Math.random() * (3000 - 500)) + 2000;
     setTimeout(() => {
-      this.obstacles = this.obstacles.concat(Obstacle.generate(this.ctx));
+      this.obstacles = this.obstacles.concat(Obstacle.generate());
       this.addObstacle();
     }, rand);
   }
@@ -44,7 +44,7 @@ export default class Game {
   addTrash() {
     var rand = Math.round(Math.random() * (3000 - 500)) + 2000;
     setTimeout(() => {
-      this.trash = this.trash.concat(Trash.generate(this.ctx));
+      this.trash = this.trash.concat(Trash.generate());
       this.addTrash();
     }, rand);
   }
