@@ -17,10 +17,16 @@ export default class Game {
     this.handleStart = this.handleStart.bind(this);
     // logic
     this.ctx.font = "30px Arial";
-    this.score = 10;
+    this.score = 0;
+
+    //timeoutes
+    this.trashTO;
+    this.obstacleTO;
+
   }
 
   init() {
+    this.score = 0;
     this.beach.init();
     this.canvas.addEventListener('click', this.handleStart);
   }
@@ -35,7 +41,7 @@ export default class Game {
 
   addObstacle() {
     var rand = Math.round(Math.random() * (3000 - 500)) + 2000;
-    setTimeout(() => {
+    this.obstacleTO = setTimeout(() => {
       this.obstacles = this.obstacles.concat(new Obstacle());
       this.addObstacle();
     }, rand);
@@ -43,7 +49,7 @@ export default class Game {
 
   addTrash() {
     var rand = Math.round(Math.random() * (3000 - 500)) + 2000;
-    setTimeout(() => {
+    this.trashTO = setTimeout(() => {
       this.trash = this.trash.concat(new Trash());
       this.addTrash();
     }, rand);
@@ -54,8 +60,13 @@ export default class Game {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
     if (this.score < 0 ) {
+      this.init()
+      clearTimeout(this.trashTO);
+      clearTimeout(this.obstacleTO);
+      this.trash = [];
+      this.obstacles = [];
       this.ctx.fillStyle = "white";
-      this.ctx.fillText(`game over`, 10, 40);
+      this.ctx.fillText(`game over :(`, 100, 200);
     } else {
 
       // GENERATE POINTS AND REMOVE ASSETS FROM CANVA
