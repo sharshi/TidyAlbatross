@@ -21,7 +21,8 @@ export default class Albatross {
       key = e.keyCode;
     }
     
-    if ((key === 38 || key === 40) && e.type !== 'touchstart') e.preventDefault();
+    // if ((key === 38 || key === 40) && e.type !== 'touchstart') e.preventDefault();
+    if ((key === 38 || key === 40)) e.preventDefault();
     this.move(key);
     this.draw();
   }
@@ -38,7 +39,7 @@ export default class Albatross {
 
   init() { 
     document.addEventListener("keydown", this.handleDown);
-    document.addEventListener("touchstart", this.handleDown);
+    document.addEventListener("touchstart", this.handleDown, { passive: false });
     document.addEventListener("keyup", () => this.speed = 0);
     document.addEventListener("touchend", () => this.speed = 0);
   }

@@ -14,18 +14,23 @@ export default class Game {
     this.beach = new Beach();
     this.addObstacle = this.addObstacle.bind(this);
     this.addTrash = this.addTrash.bind(this);
-
+    this.handleStart = this.handleStart.bind(this);
     // logic
     this.ctx.font = "30px Arial";
     this.score = 10;
   }
 
   init() {
-    this.albatross.init();
-    this.draw();
+    this.beach.init();
+    this.canvas.addEventListener('click', this.handleStart);
     this.addObstacle();
     this.addTrash();
-    this.beach.init();
+  }
+
+  handleStart() {
+    this.albatross.init();
+    this.draw();
+    this.canvas.removeEventListener('click', this.handleStart);
   }
 
   addObstacle() {
