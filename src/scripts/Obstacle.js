@@ -19,9 +19,15 @@ export default class Obstacle {
   }
 
   draw() {
+    this.context.clearRect(this.posX, this.y, 30, 30);
     this.drawOne();
-    this.context.clearRect(this.posX + 30, this.y, 30, 30);
-    requestAnimationFrame(this.draw)
+    
+    if (this.posX > -30) {
+
+      requestAnimationFrame(this.draw)
+    } else {
+      this.context.clearRect(this.posX, this.y, 30, 30);
+    }
   }
 
   drawOne() {

@@ -20,7 +20,7 @@ export default class Game {
         setInterval(() => {
           const obs = new Obstacle(this.ctx);
           obs.draw();
-        }, 2000);
+        }, 3000);
         started = true;
       }
     });
