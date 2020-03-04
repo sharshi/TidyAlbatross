@@ -12,6 +12,5 @@ export default class Trash extends Stuff {
     const idx = Math.floor(Math.random() * TRASH.length);
     this.type = TRASH[idx];
     this.img.src = `./src/images/${this.type}.png`;
-    console.log(this.type)
   }
 };
