@@ -8,8 +8,8 @@ export default class Stuff {
     this.hit = false;
   }
 
-  draw(context) {
-    context.drawImage(this.img, this.posX -= 1, this.y);
+  draw(context, speed) {
+    context.drawImage(this.img, this.posX -= speed, this.y);
   }
 
   drawOne(context, posX, posY, image) {

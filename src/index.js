@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   canvasGame.width = 800;
   canvasGame.height = 480;
   const ctxGame = canvasGame.getContext("2d");
-  let speed = 1;
+  let speed = 1.5;
   const game = new Game(speed, canvasGame, ctxGame);
   game.init();
 })

@@ -1,9 +1,9 @@
 import StartScreen from "./start_screen";
 
 export default class Background {
-  constructor(speed, canvas, ctx, image) {
+  constructor(canvas, ctx, image) {
     this.bgPos = 0;
-    this.speed = speed;
+    // this.speed = speed;
     this.canvas = canvas;
     this.ctx = ctx;
     this.image = image;
@@ -13,7 +13,7 @@ export default class Background {
     this.started = false;
   }
 
-  draw() {
+  draw(speed) {
     let beachImage = new Image(480, 480);
     beachImage.src = `./src/images/${this.image}.png`;
     beachImage.addEventListener('load', () => {
@@ -23,7 +23,7 @@ export default class Background {
       this.ctx.translate(-this.bgPos, 0);
       this.ctx.fillRect(this.bgPos, 0, this.canvas.width, this.canvas.height);
       this.ctx.translate(this.bgPos, 0);
-      this.bgPos += this.speed;
+      this.bgPos += speed;
       if (this.image === 'sand' && !this.started) {
         this.started = true;
         this.startScreen.draw();
