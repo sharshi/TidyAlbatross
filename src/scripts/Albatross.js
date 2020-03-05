@@ -40,8 +40,12 @@ export default class Albatross {
   init() { 
     document.addEventListener("keydown", this.handleDown);
     document.addEventListener("touchstart", this.handleDown, { passive: false });
-    document.addEventListener("keyup", () => this.speed = 0);
-    document.addEventListener("touchend", () => this.speed = 0);
+    const keyUp = () => {
+      this.al.src = './src/images/al-web.png';
+      this.speed = 0;
+    };
+    document.addEventListener("keyup", keyUp);
+    document.addEventListener("touchend", keyUp);
   }
 
   draw() {
@@ -57,9 +61,11 @@ export default class Albatross {
   move(key) {
     switch (key) {
       case 40: // down
+        this.al.src = './src/images/al-down.png';
         this.speed = 5;
         break;
       case 38: // up
+        this.al.src = './src/images/al-up.png';
         this.speed = -5;
         break;
       default:

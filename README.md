@@ -56,3 +56,6 @@ Guide the Albatross as he tidies up the beach while avoiding obstacles.
 ## (Bonus Features) 
  - sound effects
  - paralax effect
+
+## Credits
+ - social icons: https://github.com/konsav/social-icons

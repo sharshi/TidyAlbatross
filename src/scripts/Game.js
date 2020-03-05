@@ -15,9 +15,12 @@ export default class Game {
     this.addObstacle = this.addObstacle.bind(this);
     this.addTrash = this.addTrash.bind(this);
     this.handleStart = this.handleStart.bind(this);
+    this.onVisibilityChange = this.onVisibilityChange.bind(this);
+
     // logic
     this.ctx.font = "30px Arial";
-    this.score = 0;
+    this.score = 4;
+    this.gameIsActive = false;
 
     //timeoutes
     this.trashTO;
@@ -25,6 +28,9 @@ export default class Game {
 
     // overall speed
     this.speed = speed;
+
+    // 
+    document.addEventListener("visibilitychange", this.onVisibilityChange);
   }
 
   init() {
@@ -33,7 +39,9 @@ export default class Game {
     this.canvas.addEventListener('click', this.handleStart);
   }
 
-  handleStart() {
+  handleStart(e) {
+    // const coords = this.getClickPos(this.canvas, e)
+    this.gameIsActive = true;
     this.albatross.init();
     this.addObstacle();
     this.addTrash();
@@ -41,12 +49,29 @@ export default class Game {
     this.canvas.removeEventListener('click', this.handleStart);
   }
 
+  getClickPos(canvas, e) {
+    var rect = canvas.getBoundingClientRect();
+    return {
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
+    };
+  }
+
+
   addObstacle() {
     var rand = Math.round(Math.random() * (3000 - 500)) + 2000;
     this.obstacleTO = setTimeout(() => {
       this.obstacles = this.obstacles.concat(new Obstacle());
       this.addObstacle();
     }, rand);
+  }
+
+  onVisibilityChange(e) {
+    if (document.visibilityState === 'hidden') {
+      this.gamePause('hide');
+    } else {
+      this.gamePause('show');
+    }
   }
 
   addTrash() {
@@ -58,10 +83,13 @@ export default class Game {
   }
 
   draw() {
+    this.speed = this.speed + (this.score / 10) 
+
+
     this.beach.draw();
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-    if (this.score < 0 ) {
+    
+    if(this.score < 0) {
       this.gameOver();
     } else {
 
@@ -79,11 +107,11 @@ export default class Game {
         if (
             albatrossLocation.y - obs.y < 30 && albatrossLocation.y - obs.y > -30 &&
             obs.posX - 100 <= 60 &&
-            obs.posX - 100 >= -60 &&
+            obs.posX - 100 >= -5 &&
             !obs.hit
           ) {
           obs.hit = true;
-          this.score = this.score - 1;
+          this.score = this.score - 1; // change to lives
         }
       })
       this.obstacles = this.obstacles.filter(obs => obs)
@@ -99,6 +127,10 @@ export default class Game {
             trsh.posX - 100 >= -5 
           ) {
           this.score = this.score + 1;
+          if (this.score % 5 === 0) {
+            this.speed = this.speed + this.speed / 2;
+          }
+
           delete this.trash[i];
         } else {
           trsh.draw(this.ctx);
@@ -110,7 +142,7 @@ export default class Game {
       this.albatross.draw();
       this.ctx.fillStyle = "white";
       this.ctx.fillText(`Score: ${this.score}`, 10, 40);
-  
+
       requestAnimationFrame(this.draw);
     }
 
@@ -124,5 +156,17 @@ export default class Game {
     this.obstacles = [];
     this.ctx.fillStyle = "white";
     this.ctx.fillText(`game over :(`, 100, 200);
+  }
+
+  gamePause(hide) {
+    if (hide === 'hide') {
+      clearTimeout(this.trashTO);
+      clearTimeout(this.obstacleTO);
+    } else {
+      if (this.gameIsActive) {
+        this.addTrash();
+        this.addObstacle();
+      }
+    }
   }
 };
