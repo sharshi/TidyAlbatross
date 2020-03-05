@@ -6,6 +6,8 @@ export default class Albatross {
     this.draw = this.draw.bind(this);
     this.al = new Image();
     this.al.src = './src/images/al-web.png';
+    this.alLife = new Image(30, 30);
+    this.alLife.src = './src/images/al-web.png';
     this.speed = 0;
     this.maxHeight = 100;
     this.minHeight = 440;
@@ -13,7 +15,6 @@ export default class Albatross {
   }
 
   handleDown(e) {
-    
     let key;
     if (e.type === 'touchstart') {
       key = this.getTouchPos(this.canvas, e);
@@ -21,8 +22,8 @@ export default class Albatross {
       key = e.keyCode;
     }
     
-    // if ((key === 38 || key === 40) && e.type !== 'touchstart') e.preventDefault();
     if ((key === 38 || key === 40)) e.preventDefault();
+    
     this.move(key);
     this.draw();
   }
@@ -48,7 +49,7 @@ export default class Albatross {
     document.addEventListener("touchend", keyUp);
   }
 
-  draw() {
+  draw(numLives) {
     const tooHigh = this.pos === this.maxHeight && this.speed === -5;
     const tooLow = this.pos === this.minHeight && this.speed === 5;
     if (tooHigh || tooLow) {
@@ -56,6 +57,11 @@ export default class Albatross {
       this.pos += this.speed;
     }
     this.ctx.drawImage(this.al, 100, this.pos);
+
+    for (let i = 0; i < numLives; i++) {
+      this.ctx.drawImage(this.alLife, (25 * (i + 1)) - 15, 50, 20, 12);
+    };
+
   }
 
   move(key) {
