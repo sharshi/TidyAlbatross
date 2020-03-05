@@ -143,9 +143,9 @@ export default class Game {
            * faster + when top speed add more items
            */
           if ( this.score % 5 === 0 && this.speed <= this.maxSpeed ) {
-            this.speed = this.speed + this.speed / 2;
+            this.speed = this.speed + this.speed / 4;
             if (this.speed > this.maxSpeed) {
-              this.timeout = 1000;
+              this.timeout = 0;
             }
           } 
 
@@ -173,8 +173,11 @@ export default class Game {
     clearTimeout(this.obstacleTO);
     this.trash = [];
     this.obstacles = [];
-    this.ctx.fillStyle = "white";
-    this.ctx.fillText(`game over :(`, 100, 200);
+
+    this.ctx.fillStyle = "#3400cd";
+    this.ctx.textAlign = "center";
+    this.ctx.fillText('game over :(', this.canvas.width / 2, 130);
+    this.ctx.textAlign = "left";
   }
 
   gamePause(hide) {

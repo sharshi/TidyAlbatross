@@ -7,9 +7,7 @@ export default class StartScreen {
     this.ctx = ctx;
   }
 
-  draw() {
-
-
+  draw(status) {
     const seal = new Obstacle();
     const firePit = new Obstacle();
     const person = new Obstacle();
@@ -19,11 +17,14 @@ export default class StartScreen {
     const beachBall = new Trash();
 
     setTimeout(() => {
+      this.ctx.textAlign = "center";
 
       this.ctx.fillStyle = "#3400cd";
       this.ctx.font = "30px Arial";
-      this.ctx.textAlign = "center";
-      this.ctx.fillText('Click to start!', this.cnvs.width / 2, 170);
+
+      // this.ctx.fillText(status === 'start' ? 'Click to Start!' : 'Nice Try! Click to Start Again!', this.cnvs.width / 2, 170);
+
+      this.ctx.fillText('Click to Start!', this.cnvs.width / 2, 170);
 
       this.ctx.fillStyle = "#3400cd";
       this.ctx.font = "20px Arial";
@@ -38,11 +39,16 @@ export default class StartScreen {
   
   
       // pick up
-      this.ctx.fillText('COLLECT', 575, 390 - 50);
+      this.ctx.fillText('COLLECT', 575, 340);
   
-      bottle.drawOne(this.ctx, 520, 400 - 50, 'bottle');
-      bag.drawOne(this.ctx, 560, 400 - 50, 'bag');
-      beachBall.drawOne(this.ctx, 600, 400 - 50, 'beach-ball');
+      bottle.drawOne(this.ctx, 520, 350, 'bottle');
+      bag.drawOne(this.ctx, 560, 350, 'bag');
+      beachBall.drawOne(this.ctx, 600, 350, 'beach-ball');
+
+
+      this.ctx.font = "20px Arial";
+      this.ctx.textAlign = "center";
+      this.ctx.fillText('By Shersheial Borisute', this.cnvs.width / 2, 450);
     }, 500)
 
   }
