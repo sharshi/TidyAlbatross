@@ -1,11 +1,9 @@
 html {
-  height: 100%;
-  background: linear-gradient(#3400cd 25%, #ffdc93 50%);
-
+  background-color: #3400cd;
   header {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     
     h1 {
       width: fit-content;
@@ -16,7 +14,7 @@ html {
       display: flex;
       justify-content: flex-end;
       list-style: none;
-
+      z-index: 100;
       a {
         color: white;
 
@@ -28,7 +26,7 @@ html {
           width: 40px;
           height: 40px;
           margin: 5px;
-          transition: margin 0.3s, width 0.3s, height 0.3s;
+
           &:hover {
             margin: 3px;
             width: 44px;
@@ -39,20 +37,27 @@ html {
     }
   }
   
-  section.game {
-    width: 800px;
-    margin: 0 auto;
-    position: relative;
-    min-height: 480px;
-
-    canvas {
-      border: 1px solid black;
-      position: absolute;
-      border-radius: 50px;
-    }
-  }
-  
+    
   footer {
   
+  }
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  
+  canvas {
+    z-index: 99;
+    width: 100vw; 
+    height: 60vw;
+    max-height: 100vh;
+    max-width: 166.66vh;
+    margin: auto;
+    position: absolute;
+    top:0;bottom:0;
+    left:0;right:0;
+    box-sizing: border-box;
+    border: 5px solid black ;
   }
 }
