@@ -149,7 +149,7 @@ export default class Game {
         if (this.score % 5 === 0 && this.speed <= this.maxSpeed) {
           this.speed = this.speed + this.speed / 4;
           if (this.speed > this.maxSpeed) {
-            this.timeout = 45;
+            this.timeout = 90;
           }
         }
         delete this.trash[i];
