@@ -20,7 +20,6 @@ export default class Background {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       let tileBg = this.ctx.createPattern(beachImage, 'repeat');
 
-
       this.ctx.fillStyle = tileBg;
       
       this.ctx.translate(-this.bgPos, 0);

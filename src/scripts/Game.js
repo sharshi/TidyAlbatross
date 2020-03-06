@@ -35,7 +35,7 @@ export default class Game {
     this.counter = -1;
 
     // initial speed
-    this.speed = 1.5;
+    this.speed = 2;
 
     // sounds
     this.bird = new this.sound("./src/audio/bird.mp3");
@@ -65,7 +65,8 @@ export default class Game {
        ) {
          this.gameIsActive = true;
          this.canvas.removeEventListener('click', this.handleStart);
-        this.animFrame = requestAnimationFrame(this.draw);
+         this.draw();
+        
     }
     
   }
@@ -110,7 +111,7 @@ export default class Game {
 
       // GENERATE POINTS AND REMOVE ASSETS FROM CANVA
       const albatrossLocation = { 
-        x: 100, 
+        x: this.albatross.posX, 
         y: this.albatross.pos
       };
   
@@ -130,10 +131,8 @@ export default class Game {
       this.ctx.fillStyle = "white";
       this.ctx.fillText(`Score: ${this.score}`, 10, 40);
 
+      this.animFrame = requestAnimationFrame(this.draw);
     }
-    this.animFrame = requestAnimationFrame(this.draw);
-
-    console.log('hi')
   }
   
   detectTrash(albatrossLocation) {
@@ -143,12 +142,10 @@ export default class Game {
       }
       if (albatrossLocation.y - trsh.y < 30 &&
         albatrossLocation.y - trsh.y > -30 &&
-        trsh.posX - 100 <= 60 &&
-        trsh.posX - 100 >= -5) {
+        trsh.posX - albatrossLocation.x <= 60 &&
+        trsh.posX - albatrossLocation.x >= -5) {
         this.score = this.score + 1;
-        /**
-         * faster + when top speed add more items
-         */
+
         if (this.score % 5 === 0 && this.speed <= this.maxSpeed) {
           this.speed = this.speed + this.speed / 4;
           if (this.speed > this.maxSpeed) {
@@ -172,8 +169,8 @@ export default class Game {
       }
       obs.draw(this.ctx, this.speed);
       if (albatrossLocation.y - obs.y < 30 && albatrossLocation.y - obs.y > -30 &&
-        obs.posX - 100 <= 60 &&
-        obs.posX - 100 >= -5 &&
+        obs.posX - albatrossLocation.x <= 60 &&
+        obs.posX - albatrossLocation.x >= -5 &&
         !obs.hit) {
         obs.hit = true;
         this.lives = this.lives - 1;
