@@ -1,20 +1,25 @@
 html {
   background-color: #3400cd;
+
   header {
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-around;
     
     h1 {
       width: fit-content;
+      font-size: 30px;
+      margin: 10px;
       color: #ffdc93;
     }
   
     ul {
       display: flex;
-      justify-content: flex-end;
+      justify-content: space-between;
       list-style: none;
       z-index: 100;
+      margin: 10px;
+
       a {
         color: white;
 
@@ -47,7 +52,17 @@ body {
   width: 100vw;
   height: 100vh;
   
-  canvas {
+  section.game {
+    position: relative;
+    width: 800px;
+    margin: 0 auto;
+    min-height: 480px;
+
+    canvas {
+      position: absolute;
+    }
+  }
+  /*canvas {
     z-index: 99;
     width: 100vw; 
     height: 60vw;
@@ -59,5 +74,5 @@ body {
     left:0;right:0;
     box-sizing: border-box;
     border: 5px solid black ;
-  }
+  }*/
 }

@@ -12,8 +12,16 @@ export default class Albatross {
     this.maxHeight = 100;
     this.minHeight = 440;
     this.handleDown = this.handleDown.bind(this);
-  }
 
+    this.keyUp = this.keyUp.bind(this);
+    document.addEventListener("keydown", this.handleDown);
+    document.addEventListener("touchstart", this.handleDown, { passive: false });
+    document.addEventListener("keyup", this.keyUp);
+    document.addEventListener("touchend", this.keyUp);
+
+    setInterval(this.incrementSeconds, 1000);
+  }
+  
   handleDown(e) {
     let key;
     if (e.type === 'touchstart') {
@@ -22,10 +30,15 @@ export default class Albatross {
       key = e.keyCode;
     }
     
-    if ((key === 38 || key === 40)) e.preventDefault();
-    
-    this.move(key);
-    // this.draw();
+    if ((key === 38 || key === 40)) {
+      e.preventDefault();
+      this.move(key);
+    }
+  }
+  
+  keyUp() {
+    this.al.src = './src/images/al-web.png';
+    this.speed = 0;
   }
 
   getTouchPos(canvas, e) {
@@ -38,18 +51,14 @@ export default class Albatross {
   }
 
 
-  init() { 
-    document.addEventListener("keydown", this.handleDown);
-    document.addEventListener("touchstart", this.handleDown, { passive: false });
-    const keyUp = () => {
-      this.al.src = './src/images/al-web.png';
-      this.speed = 0;
-    };
-    document.addEventListener("keyup", keyUp);
-    document.addEventListener("touchend", keyUp);
+  incrementSeconds() {
+    console.log("a second has passed.");
   }
 
-  draw(numLives, speed) {
+
+
+
+  draw(speed, numLives) {
     const tooHigh = this.pos === this.maxHeight && this.speed === -5;
     const tooLow = this.pos === this.minHeight && this.speed === 5;
     if (tooHigh || tooLow) {

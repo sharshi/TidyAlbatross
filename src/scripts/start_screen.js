@@ -18,13 +18,22 @@ export default class StartScreen {
 
     setTimeout(() => {
       this.ctx.textAlign = "center";
-
       this.ctx.fillStyle = "#3400cd";
+
       this.ctx.font = "30px Arial";
+      
+      this.ctx.beginPath();
+      this.ctx.rect((this.cnvs.width / 2) - 50, 140, 100, 40);
+      this.ctx.strokeRect((this.cnvs.width / 2) - 50, 140, 100, 40);
+      this.ctx.fillRect((this.cnvs.width / 2) - 50, 140, 100, 40);
+      
+      
+      
+      this.ctx.stroke();
+      
+      this.ctx.fillStyle = "#ffdc93"; 
 
-      // this.ctx.fillText(status === 'start' ? 'Click to Start!' : 'Nice Try! Click to Start Again!', this.cnvs.width / 2, 170);
-
-      this.ctx.fillText('Click to Start!', this.cnvs.width / 2, 170);
+      this.ctx.fillText('Start!', this.cnvs.width / 2, 170);
 
       this.ctx.fillStyle = "#3400cd";
       this.ctx.font = "20px Arial";

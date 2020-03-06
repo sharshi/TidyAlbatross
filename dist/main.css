@@ -1,6 +1,6 @@
 html,body,section,article,h1,h2,h3,h4,p,ul,strong,em,a{margin:0;border:0;padding:0;outline:0;box-sizing:inherit;font:inherit;text-decoration:inherit;text-align:inherit;color:inherit;background:transparent}
 
-html{background-color:#3400cd}html header{width:100%;display:flex;justify-content:flex-end}html header h1{width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;color:#ffdc93}html header ul{display:flex;justify-content:flex-end;list-style:none;z-index:100}html header ul a{color:white}html header ul a:visited{color:lightgray}html header ul a img{width:40px;height:40px;margin:5px}html header ul a img:hover{margin:3px;width:44px;height:44px}body{width:100vw;height:100vh}body canvas{z-index:99;width:100vw;height:60vw;max-height:100vh;max-width:166.66vh;margin:auto;position:absolute;top:0;bottom:0;left:0;right:0;box-sizing:border-box;border:5px solid black}
+html{background-color:#3400cd}html header{width:100%;display:flex;justify-content:space-around}html header h1{width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;font-size:30px;margin:10px;color:#ffdc93}html header ul{display:flex;justify-content:space-between;list-style:none;z-index:100;margin:10px}html header ul a{color:white}html header ul a:visited{color:lightgray}html header ul a img{width:40px;height:40px;margin:5px}html header ul a img:hover{margin:3px;width:44px;height:44px}body{width:100vw;height:100vh}body section.game{position:relative;width:800px;margin:0 auto;min-height:480px}body section.game canvas{position:absolute}
 
 
 /*# sourceMappingURL=main.css.map*/
