@@ -8,7 +8,7 @@
 </head>
 <body>
   <header>
-    <!-- <h1 id="title">Tidy Albatross</h1> -->
+    <h1 id="title">Tidy Albatross</h1>
     <ul>
       <li>
         <a href="https://github.com/sharshi/TidyAlbatross" target="_blank" ><img src="./src/images/github.png" alt="github"></a>
@@ -34,6 +34,33 @@
     <br>
     social icons: <a href="https://github.com/konsav/social-icons">github.com/konsav/social-icons</a>
   </footer> -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
+  
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-analytics.js"></script>
+
+  <!-- firestore -->
+  <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-firestore.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDkwIfKA1o6CAWEZ4evRVHrXSO6tOEKzDE",
+      authDomain: "tidy-albatross.firebaseapp.com",
+      databaseURL: "https://tidy-albatross.firebaseio.com",
+      projectId: "tidy-albatross",
+      storageBucket: "tidy-albatross.appspot.com",
+      messagingSenderId: "423997099062",
+      appId: "1:423997099062:web:127e571ce80b968c109c97",
+      measurementId: "G-ZXE0WV2WN1"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+
   <script src="./dist/main.js"></script>
 </body>
 </html>

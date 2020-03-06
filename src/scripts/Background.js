@@ -20,7 +20,6 @@ export default class Background {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       let tileBg = this.ctx.createPattern(beachImage, 'repeat');
 
-
       this.ctx.fillStyle = tileBg;
       
       this.ctx.translate(-this.bgPos, 0);
@@ -28,12 +27,11 @@ export default class Background {
       this.ctx.translate(this.bgPos, 0);
 
       this.bgPos += speed;
+
+      // display on water
       if (this.image === 'water' && !this.started) {
-        this.ctx.font = "30px Arial";
-        this.ctx.textAlign = "center";
-        this.ctx.fillStyle = "#ffdc93";
-        this.ctx.fillText('Tidy Albatross', this.canvas.width / 2, 30);
-        // this.ctx.strokeText('Tidy Albatross', this.canvas.width / 2, 30);
+        // this.showTitle();
+
       }
       if (this.image === 'sand' && !this.started) {
 
@@ -41,5 +39,12 @@ export default class Background {
         this.startScreen.draw();
       }
     }, false);
+  }
+
+  showTitle() {
+    this.ctx.font = "30px Arial";
+    this.ctx.textAlign = "center";
+    this.ctx.fillStyle = "#ffdc93";
+    this.ctx.fillText('Tidy Albatross', this.canvas.width / 2, 30);
   }
 };

@@ -2,7 +2,6 @@ import Background from './background';
 
 export default class Beach {
   constructor() {
-    this.speed = 1;
     this.width = 800;
     this.height = 480;
 
