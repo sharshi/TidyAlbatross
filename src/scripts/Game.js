@@ -116,20 +116,21 @@ export default class Game {
       };
   
       if (this.counter === this.timeout) {
-        this.addObstacle();
-        this.addTrash();
+        setTimeout(this.addObstacle, Math.floor(Math.random() * 1500) + 500) 
+        setTimeout(this.addTrash, Math.floor(Math.random() * 500))
         this.counter = -1;
       }
 
       this.counter = this.counter + 1;
-
+      this.totalPoints = this.totalPoints + 1;
+      
       this.detectObstacles(albatrossLocation);
       this.detectTrash(albatrossLocation);
 
       this.albatross.draw(this.speed, this.lives);
 
       this.ctx.fillStyle = "white";
-      this.ctx.fillText(`Score: ${this.score}`, 10, 40);
+      this.ctx.fillText(`Score: ${((this.score) * 100) + this.totalPoints}`, 10, 40);
 
       this.animFrame = requestAnimationFrame(this.draw);
     }
@@ -183,17 +184,27 @@ export default class Game {
   }
 
   gameOver() {
+    const thisScore = ((this.score) * 100) + this.totalPoints;
+
+    const highScore = localStorage.getItem('highScore');
+
+    let gameOverMsg = 'game over :(';
+    if (highScore < thisScore) {
+      localStorage.setItem('highScore', thisScore);
+      gameOverMsg = 'High score! ' + thisScore;
+    }
+
     this.gameIsActive = false;
     this.points.store('score', {
       name: 'Ada',
-      score: this.score
+      score: thisScore
     })
     this.trash = [];
     this.obstacles = [];
 
     this.ctx.fillStyle = "#3400cd";
     this.ctx.textAlign = "center";
-    this.ctx.fillText('game over :(', this.canvas.width / 2, 130);
+    this.ctx.fillText(gameOverMsg, this.canvas.width / 2, 230);
     this.ctx.textAlign = "left";
 
     this.score = 0;

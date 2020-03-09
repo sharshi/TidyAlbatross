@@ -67,7 +67,14 @@ export default class StartScreen {
       bottle.drawOne(this.ctx, 670, 434, 'bottle');
       bag.drawOne(this.ctx, 715, 434, 'bag');
       beachBall.drawOne(this.ctx, 760, 434, 'beach-ball');
+
+      const highScore = localStorage.getItem('highScore');
+
+      if (highScore) {
+        this.ctx.fillText(`High Score: ${highScore}`, this.cnvs.width / 2, 500);
+      }
     }, 500)
+
 
   }
 };
