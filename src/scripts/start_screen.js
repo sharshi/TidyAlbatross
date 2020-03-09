@@ -36,28 +36,37 @@ export default class StartScreen {
       this.ctx.fillText('Start!', this.cnvs.width / 2, 170);
 
       this.ctx.fillStyle = "#3400cd";
-      this.ctx.font = "20px Arial";
-      this.ctx.fillText('Use the up and down arrow keys to help', this.cnvs.width / 2, 250);
-      this.ctx.fillText('the albatross avoid obstacles and tidy up the beach.', this.cnvs.width / 2, 330 - 50);
+      this.ctx.font = "24px Arial";
+      this.ctx.fillText('Use your arrow keys to help', this.cnvs.width / 2, 280);
+      this.ctx.fillText('the albatross avoid obstacles', this.cnvs.width / 2, 310);
+      this.ctx.fillText('and tidy up the beach.', this.cnvs.width / 2, 340);
+
+
       // avoid
-      this.ctx.fillText('AVOID', 225, 390 - 50);
+      this.ctx.strokeStyle = "#3400cd";
+      this.ctx.strokeRect(200, 400, 150, 80);
+
+      this.ctx.fillStyle = "#3400cd";
+      this.ctx.font = "bold 20px Arial";
+      this.ctx.fillText('Avoid', 274, 424);
   
-      seal.drawOne(this.ctx, 170, 400 - 50, 'seal');
-      firePit.drawOne(this.ctx, 210, 400 - 50, 'fire-pit');
-      person.drawOne(this.ctx, 250, 400 - 50, 'person');
+      seal.drawOne(this.ctx, 210, 434, 'seal');
+      firePit.drawOne(this.ctx, 255, 434, 'fire-pit');
+      person.drawOne(this.ctx, 300, 434, 'person');
   
   
       // pick up
-      this.ctx.fillText('COLLECT', 575, 340);
+
+      this.ctx.strokeStyle = "#3400cd";
+      this.ctx.strokeRect(660, 400, 150, 80);
+
+      this.ctx.fillStyle = "#3400cd";
+      this.ctx.font = "bold 20px Arial";
+      this.ctx.fillText('Collect', 734, 424);
   
-      bottle.drawOne(this.ctx, 520, 350, 'bottle');
-      bag.drawOne(this.ctx, 560, 350, 'bag');
-      beachBall.drawOne(this.ctx, 600, 350, 'beach-ball');
-
-
-      this.ctx.font = "20px Arial";
-      this.ctx.textAlign = "center";
-      this.ctx.fillText('By Shersheial Borisute', this.cnvs.width / 2, 450);
+      bottle.drawOne(this.ctx, 670, 434, 'bottle');
+      bag.drawOne(this.ctx, 715, 434, 'bag');
+      beachBall.drawOne(this.ctx, 760, 434, 'beach-ball');
     }, 500)
 
   }

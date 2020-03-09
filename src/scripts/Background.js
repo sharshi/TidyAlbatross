@@ -14,7 +14,7 @@ export default class Background {
   }
 
   draw(speed) {
-    let beachImage = new Image(480, 480);
+    let beachImage = new Image(600, 600);
     beachImage.src = `./src/images/${this.image}.png`;
     beachImage.addEventListener('load', () => {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
