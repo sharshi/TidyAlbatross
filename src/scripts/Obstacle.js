@@ -11,6 +11,6 @@ export default class Obstacle extends Stuff {
     super();
     const idx = Math.floor(Math.random() * OBSTACLES.length);
     this.type = OBSTACLES[idx];
-    this.img.src = `./src/images/${this.type}.png`;
+    this.img.src = `./src/images/large/${this.type}.png`;
   }
 };

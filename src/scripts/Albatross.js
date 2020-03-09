@@ -6,13 +6,13 @@ export default class Albatross {
     this.posX = 100;
     this.draw = this.draw.bind(this);
     this.al = new Image();
-    this.al.src = './src/images/al-web.png';
+    this.al.src = './src/images/large/al-web.png';
     this.alLife = new Image(30, 30);
-    this.alLife.src = './src/images/al-web.png';
+    this.alLife.src = './src/images/large/al-web.png';
     this.speed = 0;
     this.speedX = 0;
     this.maxHeight = 100;
-    this.minHeight = 440;
+    this.minHeight = 550;
     this.handleDown = this.handleDown.bind(this);
 
     this.keyUp = this.keyUp.bind(this);
@@ -37,7 +37,7 @@ export default class Albatross {
   }
   
   keyUp() {
-    this.al.src = './src/images/al-web.png';
+    this.al.src = './src/images/large/al-web.png';
     this.speed = 0;
     this.speedX = 0;
   }
@@ -72,22 +72,22 @@ export default class Albatross {
   move(key) {
     switch (key) {
       case 40: // down
-        this.al.src = './src/images/al-down.png';
+        this.al.src = './src/images/large/al-down.png';
         this.speed = 5;
         break;
 
       case 38: // up
-        this.al.src = './src/images/al-up.png';
+        this.al.src = './src/images/large/al-up.png';
         this.speed = -5;
         break;
 
       case 37: // left
-        this.al.src = './src/images/al-left.png';
+        this.al.src = './src/images/large/al-left.png';
         this.speedX = -5;
         break;
 
       case 39: // right
-        this.al.src = './src/images/al-web.png';
+        this.al.src = './src/images/large/al-web.png';
         this.speedX = 5;
         break;
 

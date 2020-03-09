@@ -8,8 +8,8 @@ export default class Game {
   constructor() {
 
     this.canvas = document.getElementById("canvas-game");
-    this.canvas.width = 800;
-    this.canvas.height = 480;
+    this.canvas.width = 1000;
+    this.canvas.height = 600;
 
     this.animFrame = null;
 

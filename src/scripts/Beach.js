@@ -2,15 +2,15 @@ import Background from './background';
 
 export default class Beach {
   constructor() {
-    this.width = 800;
-    this.height = 480;
+    this.width = 1000;
+    this.height = 600;
 
     this.canvasSand = document.getElementById("canvas-sand");
     this.canvasWater = document.getElementById("canvas-water");
-    this.canvasSand.width = 800;
-    this.canvasSand.height = 480;
-    this.canvasWater.width = 800;
-    this.canvasWater.height = 480;
+    this.canvasSand.width = this.width;
+    this.canvasSand.height = this.height;
+    this.canvasWater.width = this.width;
+    this.canvasWater.height = this.height;
     this.ctxSand = this.canvasSand.getContext("2d");
     this.ctxWater = this.canvasWater.getContext("2d");
     this.backgroundWater = new Background(this.canvasWater, this.ctxWater, 'water')
