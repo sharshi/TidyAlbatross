@@ -54,7 +54,8 @@ export default class Game {
   }
 
   start() {
-    document.getElementById("start-button").classList.add('hide');
+    const splash = document.getElementById("splash");
+    splash.classList.add("hide");
     this.gameIsActive = true;
     this.draw();
   }
@@ -186,22 +187,22 @@ export default class Game {
       name: 'Ada',
       score: thisScore
     })
+
     this.trash = [];
     this.obstacles = [];
-
-    this.ctx.fillStyle = "#3400cd";
-    this.ctx.textAlign = "center";
-    this.ctx.fillText(gameOverMsg, this.canvas.width / 2, 230);
-    this.ctx.textAlign = "left";
 
     this.score = 0;
     this.speed = 1.5;
     this.totalPoints = 0;
     this.lives = 5;
     
-    const button =  document.getElementById("start-button");
-    button.classList.remove("hide");
+    const button = document.getElementById("start-button");
     button.innerHTML = "Play Again!";
+    const splash = document.getElementById("splash");
+    splash.classList.remove("hide");
+    const gameOverEl = document.getElementById("game-over-msg");
+    gameOverEl.classList.remove("hide");
+    gameOverEl.innerHTML = gameOverMsg;
 
     this.init();
   }

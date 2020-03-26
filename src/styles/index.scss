@@ -71,16 +71,23 @@ body {
 
     section.splash {
       z-index: 1;
+      opacity: 1;
       position: absolute;
       top: 150px;
       left: 0;
       right: 0;
-      max-width: 300px;
+      max-width: 500px;
       margin: auto;
       background-color: #ffdc93;
       padding: 20px;
       border-radius: 10px;
       border: 2px solid #3400cd;
+
+      &.hide {
+        z-index: 0;
+        opacity: 0;
+        height: 0;
+      }
 
       button.start-button {
         height: 40px;
@@ -94,10 +101,6 @@ body {
         border: 3px solid white;
         display: block;
 
-        &.hide {
-          z-index: 0;
-        }
-
         &:hover {
           border: 0;
           cursor: pointer;
@@ -110,6 +113,40 @@ body {
         color: #3400cd;
         font-family: Arial, Helvetica, sans-serif;
         line-height: 30px;
+      }
+
+      section.items {
+        display: flex;
+        flex-wrap: wrap;
+
+        article {
+          padding: 20px;
+          border-radius: 10px;
+          border: 2px solid #3400cd;
+          margin: 10px;
+          flex-grow: 1;
+
+          h3 {
+            font-weight: bold;
+            color: #3400cd;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 25px;
+            text-align: center;
+          }
+
+          ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-evenly;
+
+            li {
+
+              img {
+                width: 50px;
+              }
+            }
+          }
+        }
       }
     }
 
