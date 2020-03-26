@@ -3,6 +3,7 @@ import Beach from './beach';
 import Obstacle from './obstacle';
 import Trash from './trash';
 import Point from './point';
+import User from './user';
 
 export default class Game {
   constructor() {
@@ -48,6 +49,10 @@ export default class Game {
 
     // add start method to window
     window.start = () => this.start(); 
+
+    // add setUsername method to window
+    window.setUsername = () => this.setUsername(); 
+    this.setUsernameInput();
   }
 
   init() {
@@ -98,7 +103,7 @@ export default class Game {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);    
       this.beach.draw(this.speed);
 
-      // GENERATE POINTS AND REMOVE ASSETS FROM CANVA
+      // GENERATE POINTS AND REMOVE ASSETS FROM CANVAS
       const albatrossLocation = { 
         x: this.albatross.posX, 
         y: this.albatross.pos
@@ -182,9 +187,10 @@ export default class Game {
       localStorage.setItem('highScore', thisScore);
       gameOverMsg = 'High score! ' + thisScore;
     }
-
+    let name = localStorage.getItem("user");
+    name = name ? name : 'Demo'
     this.points.store('score', {
-      name: 'Ada',
+      name,
       score: thisScore
     })
 
@@ -192,6 +198,17 @@ export default class Game {
     this.openSplash(gameOverMsg);
 
     this.init();
+  }
+
+  setUsernameInput() {
+    const usernameInput = document.getElementById("username-input");
+    usernameInput.value = localStorage.getItem("user");
+  }
+
+  setUsername() {
+    const usernameInput = document.getElementById("username-input");
+    const user = new User(usernameInput.value);
+    localStorage.setItem("user", user.name);
   }
 
   resetGameInfo() {
@@ -221,7 +238,6 @@ export default class Game {
       this.gameIsActive = true;
     }
   }
-
 
   sound(src) {
     this.sound = document.createElement("audio");

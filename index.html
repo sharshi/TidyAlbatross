@@ -26,7 +26,6 @@
   </header>
   <section id="game" class="game">
     <section class="splash" id="splash">
-      <section class="high-scores" id="high-scores"></section>
       <section class="instructions">
         <p class="game-over-msg hide" id="game-over-msg"></p>
         <button class="start-button" id="start-button" onclick="start()">Start!</button>
@@ -49,7 +48,16 @@
             </ul>
           </article>
         </section>
+        <section class="name-input" id="name-input">
+          <label>
+            Username:
+            <input id="username-input" type="text">
+          </label>
+          <button onclick="setUsername()" id="set-username">Set</button>
+        </section>
       </section>
+      <section class="high-scores" id="high-scores"></section>
+
     </section>
     <canvas id="canvas-sand">
     </canvas>
