@@ -1,6 +1,3 @@
-import Obstacle from "./obstacle";
-import Trash from "./trash";
-
 export default class StartScreen {
   constructor(cnvs, ctx) {
     this.cnvs = cnvs;

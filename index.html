@@ -26,26 +26,29 @@
   </header>
   <section id="game" class="game">
     <section class="splash" id="splash">
-      <p class="game-over-msg hide" id="game-over-msg"></p>
-      <button class="start-button" id="start-button" onclick="start()">Start!</button>
-      <p>Use your arrow keys to help the albatross avoid obstacles and tidy up the beach.</p>
-      <section class="items">
-        <article>
-          <h3>Collect</h3>
-          <ul>
-            <li><img src="./src/images/large/bottle.png" alt=""></li>
-            <li><img src="./src/images/large/bag.png" alt=""></li>
-            <li><img src="./src/images/large/beach-ball.png" alt=""></li>
-          </ul>
-        </article>
-        <article>
-          <h3>Avoid</h3>
-          <ul>
-            <li><img src="./src/images/large/seal.png" alt=""></li>
-            <li><img src="./src/images/large/fire-pit.png" alt=""></li>
-            <li><img src="./src/images/large/person.png" alt=""></li>
-          </ul>
-        </article>
+      <section class="high-scores" id="high-scores"></section>
+      <section class="instructions">
+        <p class="game-over-msg hide" id="game-over-msg"></p>
+        <button class="start-button" id="start-button" onclick="start()">Start!</button>
+        <p>Use your arrow keys to help the albatross avoid obstacles and tidy up the beach.</p>
+        <section class="items">
+          <article>
+            <h3>Collect</h3>
+            <ul>
+              <li><img src="./src/images/large/bottle.png" alt=""></li>
+              <li><img src="./src/images/large/bag.png" alt=""></li>
+              <li><img src="./src/images/large/beach-ball.png" alt=""></li>
+            </ul>
+          </article>
+          <article>
+            <h3>Avoid</h3>
+            <ul>
+              <li><img src="./src/images/large/seal.png" alt=""></li>
+              <li><img src="./src/images/large/fire-pit.png" alt=""></li>
+              <li><img src="./src/images/large/person.png" alt=""></li>
+            </ul>
+          </article>
+        </section>
       </section>
     </section>
     <canvas id="canvas-sand">
@@ -54,12 +57,6 @@
     </canvas>
     <canvas id="canvas-game">
     </canvas>
-  </section>
-  <section class="instructions">
-
-  </section>
-  <section class="high-scores">
-
   </section>
   <footer> 
     By <a target="_blank" href="https://www.sharshi.com">Shersheial Borisute</a>

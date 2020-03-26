@@ -46,6 +46,7 @@ export default class Game {
     // keeping score
     this.points = new Point();
 
+    // add start method to window
     window.start = () => this.start(); 
   }
 
@@ -182,20 +183,28 @@ export default class Game {
       gameOverMsg = 'High score! ' + thisScore;
     }
 
-    this.gameIsActive = false;
     this.points.store('score', {
       name: 'Ada',
       score: thisScore
     })
 
+    this.resetGameInfo();
+    this.openSplash(gameOverMsg);
+
+    this.init();
+  }
+
+  resetGameInfo() {
+    this.gameIsActive = false;
     this.trash = [];
     this.obstacles = [];
-
     this.score = 0;
     this.speed = 1.5;
     this.totalPoints = 0;
     this.lives = 5;
-    
+  }
+
+  openSplash(gameOverMsg) {
     const button = document.getElementById("start-button");
     button.innerHTML = "Play Again!";
     const splash = document.getElementById("splash");
@@ -203,8 +212,6 @@ export default class Game {
     const gameOverEl = document.getElementById("game-over-msg");
     gameOverEl.classList.remove("hide");
     gameOverEl.innerHTML = gameOverMsg;
-
-    this.init();
   }
 
   gamePause(hide) {
