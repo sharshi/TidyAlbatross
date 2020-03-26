@@ -16,12 +16,23 @@ export default class Albatross {
     this.handleDown = this.handleDown.bind(this);
 
     this.keyUp = this.keyUp.bind(this);
+  }
+  
+  addEventListeners() {
     document.addEventListener("keydown", this.handleDown);
     document.addEventListener("touchstart", this.handleDown, { passive: false });
     document.addEventListener("keyup", this.keyUp);
     document.addEventListener("touchend", this.keyUp);
   }
+
   
+  removeEventListeners() {
+    document.removeEventListener("keydown", this.handleDown);
+    document.removeEventListener("touchstart", this.handleDown);
+    document.removeEventListener("keyup", this.keyUp);
+    document.removeEventListener("touchend", this.keyUp);
+  }
+
   handleDown(e) {
     let key;
     if (e.type === 'touchstart') {

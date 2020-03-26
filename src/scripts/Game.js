@@ -60,6 +60,7 @@ export default class Game {
   }
 
   start() {
+    this.albatross.addEventListeners();
     const splash = document.getElementById("splash");
     splash.classList.add("hide");
     this.gameIsActive = true;
@@ -178,6 +179,7 @@ export default class Game {
   }
 
   gameOver() {
+    this.albatross.removeEventListeners();
     const thisScore = ((this.score) * 100) + this.totalPoints;
 
     const highScore = localStorage.getItem('highScore');
@@ -201,14 +203,26 @@ export default class Game {
   }
 
   setUsernameInput() {
+    const username = localStorage.getItem("user");
     const usernameInput = document.getElementById("username-input");
-    usernameInput.value = localStorage.getItem("user");
+    usernameInput.value = username;
+
+    if (username) {
+      this.setGreeting(username);
+    }
   }
 
   setUsername() {
     const usernameInput = document.getElementById("username-input");
     const user = new User(usernameInput.value);
     localStorage.setItem("user", user.name);
+
+    this.setGreeting(user.name);
+  }
+
+  setGreeting(user) {
+    const greeting = document.getElementById("greeting");
+    greeting.innerHTML = `Hello ${user}!`;
   }
 
   resetGameInfo() {
