@@ -19,23 +19,6 @@ export default class StartScreen {
     setTimeout(() => {
       this.ctx.textAlign = "center";
       this.ctx.fillStyle = "#3400cd";
-
-      this.ctx.font = "30px Arial";
-      
-      this.ctx.beginPath();
-      this.ctx.rect((this.cnvs.width / 2) - 50, 140, 100, 40);
-      this.ctx.strokeRect((this.cnvs.width / 2) - 50, 140, 100, 40);
-      this.ctx.fillRect((this.cnvs.width / 2) - 50, 140, 100, 40);
-      
-      
-      
-      this.ctx.stroke();
-      
-      this.ctx.fillStyle = "#ffdc93"; 
-
-      this.ctx.fillText('Start!', this.cnvs.width / 2, 170);
-
-      this.ctx.fillStyle = "#3400cd";
       this.ctx.font = "24px Arial";
       this.ctx.fillText('Use your arrow keys to help', this.cnvs.width / 2, 280);
       this.ctx.fillText('the albatross avoid obstacles', this.cnvs.width / 2, 310);
@@ -74,7 +57,5 @@ export default class StartScreen {
         this.ctx.fillText(`High Score: ${highScore}`, this.cnvs.width / 2, 500);
       }
     }, 500)
-
-
   }
 };

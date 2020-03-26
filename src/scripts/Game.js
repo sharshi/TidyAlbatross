@@ -21,7 +21,6 @@ export default class Game {
     this.beach = new Beach();
     this.addObstacle = this.addObstacle.bind(this);
     this.addTrash = this.addTrash.bind(this);
-    this.handleStart = this.handleStart.bind(this);
     this.onVisibilityChange = this.onVisibilityChange.bind(this);
 
     // logic
@@ -46,31 +45,19 @@ export default class Game {
     
     // keeping score
     this.points = new Point();
+
+    window.start = () => this.start(); 
   }
 
   init() {
     this.beach.init(this.speed);
-    this.canvas.addEventListener('click', this.handleStart);
   }
 
-  handleStart(e) {
-    const {x, y} = this.getClickPos(this.canvas, e) 
-    const startX = (this.canvas.width / 2) - 50,
-      startY = 140,
-      startW = 100 + startX, 
-      startH = 40 + startY;
-    if (
-      (x >= startX && x <= startW) &&
-      (y >= startY && y <= startH)
-       ) {
-         this.gameIsActive = true;
-         this.canvas.removeEventListener('click', this.handleStart);
-         this.draw();
-        
-    }
-    
+  start() {
+    document.getElementById("start-button").classList.add('hide');
+    this.gameIsActive = true;
+    this.draw();
   }
-
 
   getClickPos(canvas, e) {
     var rect = canvas.getBoundingClientRect();
@@ -211,6 +198,10 @@ export default class Game {
     this.speed = 1.5;
     this.totalPoints = 0;
     this.lives = 5;
+    
+    const button =  document.getElementById("start-button");
+    button.classList.remove("hide");
+    button.innerHTML = "Play Again!";
 
     this.init();
   }
