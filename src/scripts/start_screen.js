@@ -18,11 +18,6 @@ export default class StartScreen {
 
     setTimeout(() => {
       this.ctx.textAlign = "center";
-      this.ctx.fillStyle = "#3400cd";
-      this.ctx.font = "24px Arial";
-      this.ctx.fillText('Use your arrow keys to help', this.cnvs.width / 2, 280);
-      this.ctx.fillText('the albatross avoid obstacles', this.cnvs.width / 2, 310);
-      this.ctx.fillText('and tidy up the beach.', this.cnvs.width / 2, 340);
 
 
       // avoid
