@@ -3,6 +3,7 @@ import Beach from './beach';
 import Obstacle from './obstacle';
 import Trash from './trash';
 import Point from './point';
+import User from './user';
 
 export default class Game {
   constructor() {
@@ -46,7 +47,12 @@ export default class Game {
     // keeping score
     this.points = new Point();
 
+    // add start method to window
     window.start = () => this.start(); 
+
+    // add setUsername method to window
+    window.setUsername = () => this.setUsername(); 
+    this.setUsernameInput();
   }
 
   init() {
@@ -97,7 +103,7 @@ export default class Game {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);    
       this.beach.draw(this.speed);
 
-      // GENERATE POINTS AND REMOVE ASSETS FROM CANVA
+      // GENERATE POINTS AND REMOVE ASSETS FROM CANVAS
       const albatrossLocation = { 
         x: this.albatross.posX, 
         y: this.albatross.pos
@@ -181,21 +187,41 @@ export default class Game {
       localStorage.setItem('highScore', thisScore);
       gameOverMsg = 'High score! ' + thisScore;
     }
-
-    this.gameIsActive = false;
+    let name = localStorage.getItem("user");
+    name = name ? name : 'Demo'
     this.points.store('score', {
-      name: 'Ada',
+      name,
       score: thisScore
     })
 
+    this.resetGameInfo();
+    this.openSplash(gameOverMsg);
+
+    this.init();
+  }
+
+  setUsernameInput() {
+    const usernameInput = document.getElementById("username-input");
+    usernameInput.value = localStorage.getItem("user");
+  }
+
+  setUsername() {
+    const usernameInput = document.getElementById("username-input");
+    const user = new User(usernameInput.value);
+    localStorage.setItem("user", user.name);
+  }
+
+  resetGameInfo() {
+    this.gameIsActive = false;
     this.trash = [];
     this.obstacles = [];
-
     this.score = 0;
     this.speed = 1.5;
     this.totalPoints = 0;
     this.lives = 5;
-    
+  }
+
+  openSplash(gameOverMsg) {
     const button = document.getElementById("start-button");
     button.innerHTML = "Play Again!";
     const splash = document.getElementById("splash");
@@ -203,8 +229,6 @@ export default class Game {
     const gameOverEl = document.getElementById("game-over-msg");
     gameOverEl.classList.remove("hide");
     gameOverEl.innerHTML = gameOverMsg;
-
-    this.init();
   }
 
   gamePause(hide) {
@@ -214,7 +238,6 @@ export default class Game {
       this.gameIsActive = true;
     }
   }
-
 
   sound(src) {
     this.sound = document.createElement("audio");

@@ -71,85 +71,152 @@ body {
     max-width: 100vw;
 
     section.splash {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
       z-index: 1;
       opacity: 1;
       position: absolute;
       top: 150px;
       left: 0;
       right: 0;
-      max-width: 500px;
       margin: auto;
       background-color: #ffdc93;
       padding: 20px;
       border-radius: 10px;
       border: 2px solid #3400cd;
       box-shadow: 0 6px 100px 0 rgba(0, 0, 0, 0.8), 0 100px 100px 0 rgba(0, 0, 0, 0.19);
-
+      max-width: 790px;
       &.hide {
         z-index: 0;
         opacity: 0;
-        height: 0;
+        display: none;
       }
 
-      button.start-button {
-        height: 40px;
-        min-width: 100px;
-        background-color: #3400cd;
-        color: white;
-        margin: 20px auto;
-        font-size: 20px;
-        border-radius: 4px;
-        box-sizing: border-box;
-        border: 3px solid white;
-        display: block;
+      section.high-scores {
+        padding: 20px;
+        border-radius: 10px;
+        border: 2px solid #3400cd;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #3400cd;
+        max-width: 100%;
+        min-width: 200px;
 
-        &:hover {
-          border: 0;
-          cursor: pointer;
+        h3 {
+          font-weight: bold;
+          font-size: 25px;
+          text-align: center;
+          margin-bottom: 20px;
+        }
+
+        article {
+          display: flex;
+          justify-content: space-between;
+          border-bottom: 1px dashed #3400cd;
+          
+          p {
+            line-height: 25px;
+          }
+
+          &:nth-child(2) {
+            border-top: 1px dashed #3400cd;
+          }
         }
       }
 
-      p {
-        text-align: center;
+      section.instructions {
+        max-width: 500px;
         font-size: 20px;
         color: #3400cd;
         font-family: Arial, Helvetica, sans-serif;
-        line-height: 30px;
-      }
 
-      section.items {
-        display: flex;
-        flex-wrap: wrap;
+        button.start-button {
+          height: 40px;
+          min-width: 100px;
+          background-color: #3400cd;
+          color: white;
+          margin: 20px auto;
+          font-size: 20px;
+          border-radius: 4px;
+          box-sizing: border-box;
+          border: 3px solid white;
+          display: block;
 
-        article {
-          padding: 20px;
-          border-radius: 10px;
-          border: 2px solid #3400cd;
-          margin: 10px;
-          flex-grow: 1;
-
-          h3 {
-            font-weight: bold;
-            color: #3400cd;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 25px;
-            text-align: center;
+          &:hover {
+            border: 0;
+            cursor: pointer;
           }
+        }
 
-          ul {
-            list-style: none;
-            display: flex;
-            justify-content: space-evenly;
+        p {
+          text-align: center;
+          line-height: 30px;
+        }
 
-            li {
+        section.items {
+          display: flex;
+          flex-wrap: wrap;
 
-              img {
-                width: 50px;
+          article {
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #3400cd;
+            margin: 10px;
+            flex-grow: 1;
+
+            h3 {
+              font-weight: bold;
+              color: #3400cd;
+              font-family: Arial, Helvetica, sans-serif;
+              font-size: 25px;
+              text-align: center;
+            }
+
+            ul {
+              list-style: none;
+              display: flex;
+              justify-content: space-evenly;
+
+              li {
+
+                img {
+                  width: 50px;
+                }
               }
             }
           }
         }
+
+        section.name-input {
+          padding: 20px;
+          border-radius: 10px;
+          border: 2px solid #3400cd;
+          display: flex;
+          margin-bottom: 10px;
+
+          label {
+            margin: 0 auto;
+            input {
+              height: 25px;
+              background-color: transparent;
+              border: 0;
+              font-size: 20px;
+              border-bottom: 2px solid #3400cd;
+            }
+          }
+          button {
+            height: 30px;
+            width: fit-content;
+            background-color: #3400cd;
+            color: white;
+            font-size: 20px;
+            border-radius: 4px;
+            box-sizing: border-box;
+            border: 3px solid white;
+          }
+        }
       }
+
     }
 
     canvas {
