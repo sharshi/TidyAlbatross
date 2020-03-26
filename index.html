@@ -28,7 +28,7 @@
     <section class="splash" id="splash">
       <section class="instructions">
         <p class="game-over-msg hide" id="game-over-msg"></p>
-        <button class="start-button" id="start-button" onclick="start()">Start!</button>
+        <button class="start-button" id="start-button" ontouchend="start()" onclick="start()">Start!</button>
         <p>Use your arrow keys to help the albatross avoid obstacles and tidy up the beach.</p>
         <section class="items">
           <article>
@@ -48,12 +48,14 @@
             </ul>
           </article>
         </section>
+        <p class="greeting" id="greeting"></p>
+
         <section class="name-input" id="name-input">
           <label>
             Username:
             <input id="username-input" type="text">
           </label>
-          <button onclick="setUsername()" id="set-username">Set</button>
+          <button ontouchend="setUsername()" onclick="setUsername()" id="set-username">Set</button>
         </section>
       </section>
       <section class="high-scores" id="high-scores"></section>
