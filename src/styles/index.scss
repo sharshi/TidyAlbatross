@@ -6,11 +6,12 @@ html {
     display: flex;
     justify-content: space-around;
     
-    h1 {
+    h1.title {
       width: fit-content;
       font-size: 30px;
       margin: 10px;
       color: #ffdc93;
+      cursor: pointer;
     }
   
     ul {
@@ -82,6 +83,7 @@ body {
       padding: 20px;
       border-radius: 10px;
       border: 2px solid #3400cd;
+      box-shadow: 0 6px 100px 0 rgba(0, 0, 0, 0.8), 0 100px 100px 0 rgba(0, 0, 0, 0.19);
 
       &.hide {
         z-index: 0;
