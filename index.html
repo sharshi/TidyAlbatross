@@ -57,9 +57,8 @@
         <section class="name-input" id="name-input">
           <label>
             Username:
-            <input id="username-input" type="text">
+            <input id="username-input" type="text" onkeyup="setUsername()">
           </label>
-          <button ontouchend="setUsername()" onclick="setUsername()" id="set-username">Set</button>
         </section>
       </section>
       <section class="high-scores" id="high-scores"></section>
