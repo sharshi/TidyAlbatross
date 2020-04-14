@@ -30,7 +30,7 @@ export default class Game {
     this.totalPoints = 0;
     this.gameIsActive = false;
     this.lives = 5;
-    this.maxSpeed = 100;
+    this.maxSpeed = 50;
     this.timeout = 120;
     this.counter = -1;
 
@@ -110,7 +110,7 @@ export default class Game {
         y: this.albatross.pos
       };
   
-      if (this.counter >= this.timeout) {
+      if (this.counter === this.timeout) {
         setTimeout(this.addObstacle, Math.floor(Math.random() * 1500) + 500) 
         setTimeout(this.addTrash, Math.floor(Math.random() * 500))
         this.counter = -1;
