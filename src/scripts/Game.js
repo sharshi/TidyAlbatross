@@ -30,7 +30,7 @@ export default class Game {
     this.totalPoints = 0;
     this.gameIsActive = false;
     this.lives = 5;
-    this.maxSpeed = 100;
+    this.maxSpeed = 50;
     this.timeout = 120;
     this.counter = -1;
 
