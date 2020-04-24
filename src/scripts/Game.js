@@ -110,7 +110,7 @@ export default class Game {
         y: this.albatross.pos
       };
   
-      if (this.counter === this.timeout) {
+      if (this.counter >= this.timeout) {
         setTimeout(this.addObstacle, Math.floor(Math.random() * 1500) + 500) 
         setTimeout(this.addTrash, Math.floor(Math.random() * 500))
         this.counter = -1;
