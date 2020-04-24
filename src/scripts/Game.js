@@ -30,7 +30,7 @@ export default class Game {
     this.totalPoints = 0;
     this.gameIsActive = false;
     this.lives = 5;
-    this.maxSpeed = 100;
+    this.maxSpeed = 50;
     this.timeout = 120;
     this.counter = -1;
 
@@ -104,17 +104,18 @@ export default class Game {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);    
       this.beach.draw(this.speed);
 
+      if (this.counter >= this.timeout) {
+        setTimeout(this.addObstacle, Math.floor(Math.random() * 1500) + 500) 
+        setTimeout(this.addTrash, Math.floor(Math.random() * 500))
+        this.counter = -1;
+      }
+      
       // GENERATE POINTS AND REMOVE ASSETS FROM CANVAS
       const albatrossLocation = { 
         x: this.albatross.posX, 
         y: this.albatross.pos
       };
   
-      if (this.counter >= this.timeout) {
-        setTimeout(this.addObstacle, Math.floor(Math.random() * 1500) + 500) 
-        setTimeout(this.addTrash, Math.floor(Math.random() * 500))
-        this.counter = -1;
-      }
 
       this.counter = this.counter + 1;
       this.totalPoints = this.totalPoints + 1;
