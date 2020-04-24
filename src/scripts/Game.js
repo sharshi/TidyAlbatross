@@ -115,7 +115,6 @@ export default class Game {
         x: this.albatross.posX, 
         y: this.albatross.pos
       };
-  
 
       this.counter = this.counter + 1;
       this.totalPoints = this.totalPoints + 1;
