@@ -11,8 +11,8 @@
   ],
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js",
-    "webpack:watch": "webpack --watch --config webpack.dev.js",
-    "webpack:build": "webpack --config webpack.prod.js  --optimize-minimize"
+    "watch": "webpack --watch --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js  --optimize-minimize"
   },
   "author": "",
   "license": "ISC",
