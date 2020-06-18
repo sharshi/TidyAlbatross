@@ -110,7 +110,6 @@ export default class Game {
         this.counter = -1;
       }
       
-      // GENERATE POINTS AND REMOVE ASSETS FROM CANVAS
       const albatrossLocation = { 
         x: this.albatross.posX, 
         y: this.albatross.pos
