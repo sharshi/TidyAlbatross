@@ -15,14 +15,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install
-    - run: npm run build
-    - uses: actions/checkout@v2
-    - name: stage aartifacts
     - uses: actions/upload-artifact@v2
       with:
         name: dist
         path: dist
+    - run: npm install
+    - run: npm run build
     - name: pull-request
       uses: repo-sync/pull-request@v2
       with:
