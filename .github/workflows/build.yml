@@ -17,10 +17,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install
     - run: npm run build
-  pull-request:
-    needs: [ build ]
-    runs-on: ubuntu-latest
-    steps:
     - uses: actions/checkout@v2
     - name: pull-request
       uses: repo-sync/pull-request@v2
